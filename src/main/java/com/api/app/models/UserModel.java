@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -25,4 +26,7 @@ public class UserModel implements Serializable {
 
     @Column(name = "pass", nullable = false)
     private String pass;
+
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
+    private List<LojaModel> lojas;
 }
